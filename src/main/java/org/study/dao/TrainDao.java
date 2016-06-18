@@ -10,5 +10,7 @@ import java.util.List;
 public interface TrainDao {
 
     List<Train> getAllTrains();
-
+    void createTrain(Train train);
+    void deleteTrain(int numbOfTrain);
+    void updateTrain(int numbOfTrain, int numbVagon);
 }

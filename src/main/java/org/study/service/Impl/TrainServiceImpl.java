@@ -16,4 +16,22 @@ public class TrainServiceImpl implements TrainService{
         TrainDao trainDao = new TrainDaoImpl();
         return trainDao.getAllTrains();
     }
+
+    @Override
+    public void createTrain(Train train) {
+        TrainDao trainDao = new TrainDaoImpl();
+        trainDao.createTrain(train);
+    }
+
+    @Override
+    public void deleteTrain(int numbOfTrain) {
+        TrainDao trainDao = new TrainDaoImpl();
+        trainDao.deleteTrain(numbOfTrain);
+    }
+
+    @Override
+    public void updateTrain(int numbOfTrain, int numbVagon) {
+        TrainDao trainDao = new TrainDaoImpl();
+        trainDao.updateTrain(numbOfTrain, numbVagon);
+    }
 }

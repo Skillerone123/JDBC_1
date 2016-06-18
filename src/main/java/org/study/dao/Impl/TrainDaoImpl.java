@@ -5,10 +5,7 @@ import org.study.dao.TrainDao;
 import org.study.entity.Train;
 
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +32,45 @@ public class TrainDaoImpl implements TrainDao {
             e.printStackTrace();
         }
         return trains;
+    }
+
+    @Override
+    public void createTrain(Train train) {
+        String query = "Insert into trains(numb_of_train, name, driver, numb_vagon) Values (?,?,?,?);";
+        try(Connection connection = new ConnectionManager().getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, train.getNumbOfTrain());
+            preparedStatement.setString(2, train.getName());
+            preparedStatement.setString(3, train.getDriver());
+            preparedStatement.setInt(4, train.getNumbVagon());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteTrain(int numbOfTrain) {
+        String query = "Delete from trains WHERE numb_of_train=?";
+        try(Connection connection = new ConnectionManager().getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, numbOfTrain);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateTrain(int numbOfTrain, int numbVagon) {
+        String query = "Update trains SET numb_vagon=? WHERE numb_of_train=?";
+        try(Connection connection = new ConnectionManager().getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, numbVagon);
+            preparedStatement.setInt(2, numbOfTrain);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

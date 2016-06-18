@@ -10,4 +10,7 @@ import java.util.List;
 public interface TrainService {
 
     List<Train> getAllTrainsFromDB();
+    void createTrain(Train train);
+    void deleteTrain(int numbOfTrain);
+    void updateTrain(int numbOfTrain, int numbVagon);
 }

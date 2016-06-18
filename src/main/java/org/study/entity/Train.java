@@ -13,6 +13,16 @@ public class Train {
 
     private int numbVagon;
 
+    public Train() {
+    }
+
+    public Train(int numbOfTrain, String name, String driver, int numbVagon) {
+        this.numbOfTrain = numbOfTrain;
+        this.name = name;
+        this.driver = driver;
+        this.numbVagon = numbVagon;
+    }
+
     public int getNumbOfTrain() {
         return numbOfTrain;
     }
