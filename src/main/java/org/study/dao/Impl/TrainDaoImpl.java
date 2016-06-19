@@ -1,5 +1,7 @@
 package org.study.dao.Impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.study.connection.ConnectionManager;
 import org.study.dao.TrainDao;
 import org.study.entity.Train;
@@ -13,6 +15,7 @@ import java.util.List;
  * Created by Skiller on 17.06.2016.
  */
 public class TrainDaoImpl implements TrainDao {
+    public static final Logger LOGGER = LoggerFactory.getLogger(TrainDaoImpl.class);
 
     public List<Train> getAllTrains() {
         List<Train> trains = new ArrayList<Train>();
@@ -29,7 +32,7 @@ public class TrainDaoImpl implements TrainDao {
                 trains.add(train);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.warn("Wrong SQL!", e);
         }
         return trains;
     }
@@ -45,7 +48,7 @@ public class TrainDaoImpl implements TrainDao {
             preparedStatement.setInt(4, train.getNumbVagon());
             preparedStatement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.warn("Wrong SQL!", e);
         }
     }
 
@@ -57,7 +60,7 @@ public class TrainDaoImpl implements TrainDao {
             preparedStatement.setInt(1, numbOfTrain);
             preparedStatement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.warn("Wrong SQL!", e);
         }
     }
 
@@ -70,7 +73,7 @@ public class TrainDaoImpl implements TrainDao {
             preparedStatement.setInt(2, numbOfTrain);
             preparedStatement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.warn("Wrong SQL!", e);
         }
     }
 }

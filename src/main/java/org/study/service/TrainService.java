@@ -13,4 +13,5 @@ public interface TrainService {
     void createTrain(Train train);
     void deleteTrain(int numbOfTrain);
     void updateTrain(int numbOfTrain, int numbVagon);
+    void parseQuery(String query);
 }
